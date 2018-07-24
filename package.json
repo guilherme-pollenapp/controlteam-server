@@ -1,0 +1,32 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main"
+  },
+  "author": "Guilherme Soares Rosa",
+  "license": "ISC",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.16.3",
+    "express-load": "^1.1.16",
+    "jsonwebtoken": "^8.3.0",
+    "mongodb": "^3.0.10",
+    "mysql": "^2.15.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gsrosa/controlteam.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gsrosa/controlteam/issues"
+  },
+  "homepage": "https://github.com/gsrosa/controlteam#readme",
+  "description": ""
+}

@@ -3,7 +3,7 @@ module.exports = () => {
         this.listPositions = () => {
             return new Promise((resolve,reject) => {
                 con.query(
-                    `select position_company.*,sector_company.name_sector,company.name_company from position_company 
+                    `select position_company.*,sector_company.name_sector,company.name_company,company.id_company from position_company 
                         inner join sector_company on position_company.id_sector=sector_company.id_sector
                         inner join company on sector_company.id_company=company.id_company
                         where position_company.visible=1 and sector_company.visible=1 and company.visible=1
@@ -20,7 +20,7 @@ module.exports = () => {
         this.listPositionsById = (id) => {
             return new Promise((resolve,reject) => {
                 con.query(
-                    `select position_company.*,sector_company.name_sector,company.name_company from position_company 
+                    `select position_company.*,sector_company.name_sector,company.name_company,company.id_company from position_company 
                         inner join sector_company on position_company.id_sector=sector_company.id_sector
                         inner join company on sector_company.id_company=company.id_company
                         where position_company.id_position in (${id.join(",")}) and position_company.visible=1 and sector_company.visible=1 and company.visible=1
@@ -37,7 +37,7 @@ module.exports = () => {
         this.listPositionsBySector = (id) => {
             return new Promise((resolve,reject) => {
                 con.query(
-                    `select position_company.*,sector_company.name_sector,company.name_company from position_company 
+                    `select position_company.*,sector_company.name_sector,company.name_company,company.id_company from position_company 
                         inner join sector_company on position_company.id_sector=sector_company.id_sector
                         inner join company on sector_company.id_company=company.id_company
                         where sector_company.id_sector in (${id.join(",")}) and position_company.visible=1 and sector_company.visible=1 and company.visible=1
@@ -54,7 +54,7 @@ module.exports = () => {
         this.listPositionsByCompany = (id) => {
             return new Promise((resolve,reject) => {
                 con.query(
-                    `select position_company.*,sector_company.name_sector,company.name_company from position_company 
+                    `select position_company.*,sector_company.name_sector,company.name_company,company.id_company from position_company 
                         inner join sector_company on position_company.id_sector=sector_company.id_sector
                         inner join company on sector_company.id_company=company.id_company
                         where company.id_company in (${id.join(",")}) and position_company.visible=1 and sector_company.visible=1 and company.visible=1
@@ -71,7 +71,7 @@ module.exports = () => {
         this.listPositionsBySectorAndCompany = (company,sector) => {
             return new Promise((resolve,reject) => {
                 con.query(
-                    `select position_company.*,sector_company.name_sector,company.name_company from position_company 
+                    `select position_company.*,sector_company.name_sector,company.name_company,company.id_company from position_company 
                         inner join sector_company on position_company.id_sector=sector_company.id_sector
                         inner join company on sector_company.id_company=company.id_company
                         where company.id_company in (${company.join(",")}) and 

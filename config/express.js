@@ -1,7 +1,7 @@
 var express = require('express')
-    ,bodyParser = require('body-parser')
-    ,load = require('express-load')
-    cors =   require('cors');
+    , bodyParser = require('body-parser')
+    , load = require('express-load')
+cors = require('cors');
 
 
 module.exports = () => {
@@ -9,13 +9,13 @@ module.exports = () => {
 
     app.use(cors());
 
-    app.set('secret','apenasmaisumtestedevalidacao');
+    app.set('secret', 'apenasmaisumtestedevalidacao');
 
-    app.use(bodyParser.urlencoded({extended: true}));
+    app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
 
 
-    load('infra',{cwd:'app'})
+    load('infra', { cwd: 'app' })
         .then('api')
         .then('routes/auth')
         .then('routes/token')

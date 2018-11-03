@@ -16,13 +16,13 @@
     "express": "^4.16.3",
     "express-load": "^1.1.16",
     "jsonwebtoken": "^8.3.0",
-    "mongodb": "^3.0.10",
+    "mongodb": "^3.1.8",
     "mysql": "^2.15.0"
   },
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gsrosa/controlteam.git"
+    "url": "https://github.com/gsrosa/controlteam.git"
   },
   "bugs": {
     "url": "https://github.com/gsrosa/controlteam/issues"

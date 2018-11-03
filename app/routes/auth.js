@@ -3,4 +3,7 @@ module.exports = (app) => {
 
 	app.route("/auth")
 	.post(APIauth.auth);
+
+	app.route("/app/auth")
+		.post(APIauth.authAPP);
 }		

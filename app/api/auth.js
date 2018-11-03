@@ -25,6 +25,30 @@ module.exports = (app) => {
 				});
 			})
 		}
+
+		this.authAPP = (req, res) => {
+			var con = app.infra.mysqlFactory;
+			var auth = app.infra.authDAO();
+
+			let data = req.body;
+
+			auth.authAPP(con,data).then((result) => {
+				var token = jwt.sign({ cpf: data.cpf }, app.get('secret'), {
+					expiresIn: 84600
+				});
+
+				if (result.length > 0){
+					result[0].token = token;
+					res.json(result);
+				}
+				else {
+					res.status(500).send(result);
+				}
+
+			}).catch(err => {
+				res.send(err);
+			})
+		}
 		
 		this.token = (req,res,next) => {
 			let token = req.headers['x-access-token'];

@@ -31,8 +31,8 @@ module.exports = (app) => {
                 let evaluationDAO = app.infra.evaluations.evaluationDAO();
 
                 var id = req.params.id;
-                
-                if(id){
+
+                if (id) {
                     evaluationDAO.findEvaluation(db, id).then(result => {
                         res.json(result);
                     })
@@ -48,7 +48,7 @@ module.exports = (app) => {
 
                 var id = req.params.id;
 
-                evaluationDAO.findEvaluationByEvaluter(db,id).then(result => {
+                evaluationDAO.findEvaluationByEvaluter(db, id).then(result => {
                     res.json(result);
                 })
             })
@@ -75,22 +75,35 @@ module.exports = (app) => {
 
                 data.deadline = new Date(data.deadline);
 
-                if(data.ev_i1){
-                    data.answers = data.evaluted.map(item => 
+                if (data.ev_i1) {
+                    data.answers = data.evaluted.map(item =>
                         item = {
                             evaluted: item,
                             evalutedAnswer: {
                                 questions: null,
                                 date: null
                             },
-                            evaluterAnswer: data.evaluter.map(ev => 
+                            evaluterAnswer: data.evaluter.map(ev =>
                                 ev = {
                                     evaluter: ev,
                                     questions: null,
                                     date: null
-                            })
+                                })
                         }
                     )
+
+                    data.consense = data.evaluted.reduce((prev, item) =>
+                        prev.concat(
+                            data.evaluter.reduce((p, ev) => p.concat({
+                                evaluted: item,
+                                evaluter: ev,
+                                questions: null,
+                                date: null,
+                                active: false
+                            }), [])
+                        ), [])
+
+                    console.log(data.consense)
                 }
 
                 evaluationDAO.add(db, data).then(resolve => {

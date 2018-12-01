@@ -56,7 +56,6 @@ module.exports = (app) => {
                 if(error){
                     res.sendStatus(401);
                 }
-
                 next();
 			});	
 		}

@@ -9,4 +9,10 @@ module.exports = (app) => {
 
     app.route("/app/evaluation/evaluter/:id/historic")
         .get(api.getHistoric);
+
+    app.route("/app/evaluation/evaluter/:id/:evaluted/:evaluter/:position")
+        .put(api.update);
+
+    app.route("/app/evaluation/consense/:id/pending")
+        .get(api.findConsense)
 }

@@ -32,12 +32,14 @@ module.exports = () => {
                     title: 1,
                     questions:1,
                     company: 1,
-                    deadline: 1
+                    deadline: 1,
+                    answers: 1
                 }
-            }).toArray((err,doc) => {
+            }).toArray((err,result) => {
                 if(err)
                     return reject(err);
-                return resolve(doc);
+                
+                return resolve(result);
             })
         })
 
